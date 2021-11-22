@@ -1,0 +1,35 @@
+$utilities:(
+    'min-height':(
+        'prefix':'h',
+        'values':(
+            '15':15vh,
+            '30':30vh,
+            '50':50vh,
+            '70':70vh,
+            '100':100vh
+
+        )
+    ),
+    'width':(
+        'prefix':'w',
+        'values':(
+            '0':0px,
+            '15':15%,
+            '30':30%,
+            '50':50%,
+            '75':75%,
+            '100':100%
+        )
+    )
+);
+
+@each $property,$needToMapAgain in $utilities{
+    $prefix:map-get($needToMapAgain,'prefix');
+    $values:map-get($needToMapAgain,'values');
+   @debug $property;
+    @each $key,$val in $values{
+        .#{$prefix}-#{$key}{
+            #{$property}:$val
+        }
+    }
+}

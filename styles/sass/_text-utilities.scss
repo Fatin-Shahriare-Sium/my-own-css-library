@@ -1,0 +1,29 @@
+
+$text:(
+    'primary':$blue,
+    'secondary':$gray-600,
+    'info':$cyan,
+    'success':$green,
+    'danger':$red,
+    'dark':$gray-900,
+    'warning':$yellow
+);
+
+@each $key,$val in $text{
+  
+    .text-#{$key}{
+        color:$val
+    };
+
+    .hover\:text-#{$key}{
+        &:hover{
+            color: $val;
+            cursor: pointer;
+        }
+        
+    }
+
+    @include make-utility-responsive(color,text,$key,$val)
+
+}
+

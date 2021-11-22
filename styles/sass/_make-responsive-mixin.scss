@@ -1,0 +1,27 @@
+
+
+@mixin make-utility-responsive($property,$prefix,$key,$val) {
+    @include media-breakpoint-clamp('sm','xs'){
+        .xs\:#{$prefix}-#{$key}{
+            #{$property}:$val!important;
+        }
+    }
+
+    @include media-breakpoint-clamp('md','sm'){
+        .sm\:#{$prefix}-#{$key}{
+            #{$property}:$val!important;
+        }
+    }
+    
+    @include media-breakpoint-clamp('lg','md'){
+        .md\:#{$prefix}-#{$key}{
+            #{$property}:$val!important;
+        }
+    }
+
+    @include media-breakpoint-clamp('xl','lg'){
+        .lg\:#{$prefix}-#{$key}{
+            #{$property}:$val!important;
+        }
+    }
+}

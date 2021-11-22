@@ -1,0 +1,34 @@
+@use "sass:list";
+
+@function tint-color($color, $percentage) {
+    @return mix(#FFF, $color, $percentage);
+}
+
+@function shade-color($color, $percentage) {
+    @return mix(#000, $color, $percentage);
+}
+
+
+@each $key,$val in $colors{
+    $power:(100,200,300,400,500,600,700,800,900);
+    $percentage:(80%,60%,40%,20%,0%,20%,40%,60%,80%);
+    
+    @each $index in $power{
+
+        @if $index<500 {
+           .#{$key}-#{$index}{
+               background-color: tint-color($val,list.nth($percentage,list.index($power,$index)));
+           }
+        }@else if $index==500{
+            .#{$key}-#{$index}{
+                background-color: $val;
+            }
+        }@else{
+            .#{$key}-#{$index}{
+                background-color: shade-color($val,list.nth($percentage,list.index($power,$index)) );
+            }
+        }
+    }
+}
+
+

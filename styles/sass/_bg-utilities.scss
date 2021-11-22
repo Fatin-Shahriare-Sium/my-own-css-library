@@ -1,0 +1,20 @@
+$back-color:(
+    'primary':$blue,
+    'secondary':$gray-600,
+    'info':$cyan,
+    'success':$green,
+    'danger':$red,
+    'dark':$gray-900,
+    'warning':$yellow
+);
+
+
+@each $key,$val in $back-color{
+    .bg-#{$key}{
+        background-color: $val;
+    }
+    .hover\:bg-#{$key}{
+        background-color: $val;
+    }
+    @include make-utility-responsive(background-color,bg,$key,$val)
+}
